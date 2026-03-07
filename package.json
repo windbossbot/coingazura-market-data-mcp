@@ -1,9 +1,14 @@
 {
   "name": "coingazura-market-data-mcp",
-  "version": "0.1.0",
-  "description": "Read-only MCP server for COINGAZURA market mood and yield candidate snapshots.",
+  "version": "0.1.1",
+  "description": "Read-only MCP server for COINGAZURA live market mood and yield candidate snapshots.",
   "type": "module",
   "main": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LAUNCHGUIDE.md"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
@@ -18,6 +23,14 @@
     "coingazura"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/windbossbot/coingazura-market-data-mcp.git"
+  },
+  "homepage": "https://github.com/windbossbot/coingazura-market-data-mcp",
+  "bugs": {
+    "url": "https://github.com/windbossbot/coingazura-market-data-mcp/issues"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.18.0",
     "zod": "^3.24.2"

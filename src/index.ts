@@ -2,116 +2,121 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
+const MARKET_MOOD_URL =
+  "https://coingazura-agent-endpoint.kimrla112.workers.dev/resources/market-mood-snapshot";
+const YIELD_CANDIDATES_URL =
+  "https://coingazura-agent-endpoint.kimrla112.workers.dev/resources/yield-candidates-latest";
+
 type MarketMoodOutput = {
+  timestamp: string;
+  resource: string;
   moodScore: number;
   classification: string;
   riskBias: string;
   actionHint: string;
   timeframe: string;
+  inputs?: {
+    fearGreedIndex?: number | null;
+    btcDominancePct?: number | null;
+    marketCapChange24hPct?: number | null;
+  };
+  note?: string;
 };
 
 type YieldCandidate = {
-  protocol: string;
-  symbol: string;
   chain: string;
+  project: string;
+  symbol: string;
   apy: number;
+  apyBase: number | null;
+  apyReward: number | null;
   tvlUsd: number;
+  stableLike: boolean;
   riskNote: string;
   source: string;
+  fetchedAt: string;
+};
+
+type YieldCandidatesOutput = {
+  timestamp?: string;
+  chain?: string | null;
+  minApy?: number | null;
+  minTvlUsd?: number | null;
+  stableOnly: boolean;
+  count: number;
+  items: YieldCandidate[];
+  requested?: {
+    chain?: string | null;
+    minApy?: number | null;
+    minTvlUsd?: number | null;
+    stableOnly?: boolean;
+    maxItems?: number | null;
+  };
 };
 
 const server = new McpServer({
   name: "coingazura-market-data-mcp-server",
-  version: "0.1.0"
+  version: "0.1.1"
 });
 
-function deriveMarketMood(
-  fearGreedIndex = 50,
-  btcDominancePct = 55,
-  marketCapChange24hPct = 0,
-  timeframe = "1d"
-): MarketMoodOutput {
-  const momentumBias = marketCapChange24hPct >= 0 ? 5 : -5;
-  const dominanceBias = btcDominancePct >= 58 ? -3 : btcDominancePct <= 50 ? 3 : 0;
-  const moodScore = Math.max(0, Math.min(100, fearGreedIndex + momentumBias + dominanceBias));
-
-  let classification = "neutral";
-  let riskBias = "balanced";
-  let actionHint = "wait for confirmation";
-
-  if (moodScore >= 70) {
-    classification = "greed";
-    riskBias = "risk-on";
-    actionHint = "watch for overheated continuation or fast pullback";
-  } else if (moodScore <= 30) {
-    classification = "fear";
-    riskBias = "defensive";
-    actionHint = "favor protection and look for selective mean-reversion only";
-  } else if (moodScore >= 56) {
-    classification = "constructive";
-    riskBias = "measured risk-on";
-    actionHint = "bias long only if structure and liquidity confirm";
-  } else if (moodScore <= 44) {
-    classification = "cautious";
-    riskBias = "risk-off";
-    actionHint = "reduce aggression and tighten invalidation";
+async function fetchJson<T>(baseUrl: string, params: Record<string, string>): Promise<T> {
+  const url = new URL(baseUrl);
+  for (const [key, value] of Object.entries(params)) {
+    url.searchParams.set(key, value);
   }
 
-  return { moodScore, classification, riskBias, actionHint, timeframe };
+  const response = await fetch(url, {
+    headers: {
+      Accept: "application/json"
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error(`Resource fetch failed: ${response.status} ${response.statusText}`);
+  }
+
+  return (await response.json()) as T;
 }
 
-function getMockYieldCandidates(
-  chain?: string,
-  minApy = 0,
-  minTvlUsd = 0,
-  stableOnly = false,
-  maxItems = 5
-): YieldCandidate[] {
-  const candidates: YieldCandidate[] = [
-    {
-      protocol: "Aave",
-      symbol: "USDC",
-      chain: "Base",
-      apy: 6.8,
-      tvlUsd: 145000000,
-      riskNote: "blue-chip lending venue, rate can compress quickly",
-      source: "coingazura_yield_snapshot"
-    },
-    {
-      protocol: "Morpho",
-      symbol: "USDT",
-      chain: "Ethereum",
-      apy: 9.4,
-      tvlUsd: 82000000,
-      riskNote: "higher rate, strategy crowding risk",
-      source: "coingazura_yield_snapshot"
-    },
-    {
-      protocol: "Fluid",
-      symbol: "USDC",
-      chain: "Arbitrum",
-      apy: 7.1,
-      tvlUsd: 38000000,
-      riskNote: "monitor liquidity migration and incentives",
-      source: "coingazura_yield_snapshot"
-    },
-    {
-      protocol: "Pendle",
-      symbol: "sUSDe",
-      chain: "Ethereum",
-      apy: 14.2,
-      tvlUsd: 61000000,
-      riskNote: "non-stable strategy risk and basis sensitivity",
-      source: "coingazura_yield_snapshot"
-    }
-  ];
+function normalizeMarketMoodResponse(raw: any): MarketMoodOutput {
+  return {
+    timestamp: String(raw.timestamp ?? new Date().toISOString()),
+    resource: String(raw.resource ?? "market_mood_snapshot"),
+    moodScore: Number(raw.moodScore ?? 50),
+    classification: String(raw.moodClassification ?? raw.classification ?? "neutral"),
+    riskBias: String(raw.riskBias ?? "balanced"),
+    actionHint: String(raw.actionHint ?? "wait for confirmation"),
+    timeframe: String(raw.timeframe ?? "1d"),
+    inputs: raw.inputs ?? undefined,
+    note: raw.note ?? undefined
+  };
+}
 
-  return candidates
-    .filter((item) => !chain || item.chain.toLowerCase() === chain.toLowerCase())
-    .filter((item) => item.apy >= minApy)
-    .filter((item) => item.tvlUsd >= minTvlUsd)
-    .filter((item) => !stableOnly || ["USDC", "USDT"].includes(item.symbol))
-    .slice(0, maxItems);
+function normalizeYieldCandidatesResponse(raw: any): YieldCandidatesOutput {
+  return {
+    timestamp: raw.timestamp ? String(raw.timestamp) : undefined,
+    chain: raw.chain ? String(raw.chain) : undefined,
+    minApy: raw.minApy == null ? undefined : Number(raw.minApy),
+    minTvlUsd: raw.minTvlUsd == null ? undefined : Number(raw.minTvlUsd),
+    stableOnly: Boolean(raw.stableOnly),
+    count: Number(raw.count ?? 0),
+    requested: raw.requested ?? undefined,
+    items: Array.isArray(raw.items)
+      ? raw.items.map((item: any) => ({
+          chain: String(item.chain ?? ""),
+          project: String(item.project ?? ""),
+          symbol: String(item.symbol ?? ""),
+          apy: Number(item.apy ?? 0),
+          apyBase: item.apyBase == null ? null : Number(item.apyBase),
+          apyReward: item.apyReward == null ? null : Number(item.apyReward),
+          tvlUsd: Number(item.tvlUsd ?? 0),
+          stableLike: Boolean(item.stableLike),
+          riskNote: String(item.riskNote ?? ""),
+          source: String(item.source ?? ""),
+          fetchedAt: String(item.fetchedAt ?? "")
+        }))
+      : []
+  };
 }
 
 server.registerTool(
@@ -134,7 +139,13 @@ server.registerTool(
     }
   },
   async ({ fearGreedIndex, btcDominancePct, marketCapChange24hPct, timeframe }) => {
-    const output = deriveMarketMood(fearGreedIndex, btcDominancePct, marketCapChange24hPct, timeframe);
+    const raw = await fetchJson<any>(MARKET_MOOD_URL, {
+      ...(fearGreedIndex == null ? {} : { fearGreedIndex: String(fearGreedIndex) }),
+      ...(btcDominancePct == null ? {} : { btcDominancePct: String(btcDominancePct) }),
+      ...(marketCapChange24hPct == null ? {} : { marketCapChange24hPct: String(marketCapChange24hPct) }),
+      ...(timeframe ? { timeframe } : {})
+    });
+    const output = normalizeMarketMoodResponse(raw);
     return {
       content: [{ type: "text", text: JSON.stringify(output, null, 2) }],
       structuredContent: output
@@ -163,11 +174,14 @@ server.registerTool(
     }
   },
   async ({ chain, minApy, minTvlUsd, stableOnly, maxItems }) => {
-    const output = {
-      count: 0,
-      items: getMockYieldCandidates(chain, minApy, minTvlUsd, stableOnly, maxItems)
-    };
-    output.count = output.items.length;
+    const raw = await fetchJson<any>(YIELD_CANDIDATES_URL, {
+      ...(chain ? { chain } : {}),
+      ...(minApy == null ? {} : { minApy: String(minApy) }),
+      ...(minTvlUsd == null ? {} : { minTvlUsd: String(minTvlUsd) }),
+      ...(stableOnly == null ? {} : { stableOnly: String(stableOnly) }),
+      ...(maxItems == null ? {} : { maxItems: String(maxItems) })
+    });
+    const output = normalizeYieldCandidatesResponse(raw);
     return {
       content: [{ type: "text", text: JSON.stringify(output, null, 2) }],
       structuredContent: output
