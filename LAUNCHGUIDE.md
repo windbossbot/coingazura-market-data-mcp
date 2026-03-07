@@ -106,6 +106,7 @@ npx -y coingazura-market-data-mcp
 - no order execution
 - no token transfers
 - no destructive tools
+- fixed outbound resource targets only
 
 ## Source
 

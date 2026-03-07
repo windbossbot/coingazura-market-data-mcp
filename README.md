@@ -40,6 +40,14 @@ npx -y coingazura-market-data-mcp
 - No trading or wallet actions
 - No authentication required for the initial local version
 - Live fetch from COINGAZURA resource endpoints
+- Fixed network targets only
+
+## Security Notes
+
+- No arbitrary URL fetches
+- No wallet permissions
+- No transaction execution
+- Outbound requests are restricted to fixed COINGAZURA resource endpoints
 
 ## Data Sources
 

@@ -8,6 +8,7 @@ const MARKET_MOOD_URL =
   "https://coingazura-agent-endpoint.kimrla112.workers.dev/resources/market-mood-snapshot";
 const YIELD_CANDIDATES_URL =
   "https://coingazura-agent-endpoint.kimrla112.workers.dev/resources/yield-candidates-latest";
+const ALLOWED_HOST = "coingazura-agent-endpoint.kimrla112.workers.dev";
 
 type MarketMoodOutput = {
   timestamp: string;
@@ -84,11 +85,15 @@ const server = new McpServer({
 
 async function fetchJson<T>(baseUrl: string, params: Record<string, string>): Promise<T> {
   const url = new URL(baseUrl);
+  if (url.hostname !== ALLOWED_HOST) {
+    throw new Error(`Blocked outbound host: ${url.hostname}`);
+  }
   for (const [key, value] of Object.entries(params)) {
     url.searchParams.set(key, value);
   }
 
   const response = await fetch(url, {
+    signal: AbortSignal.timeout(10_000),
     headers: {
       Accept: "application/json"
     }
