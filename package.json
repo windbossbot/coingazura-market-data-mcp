@@ -1,14 +1,20 @@
 {
   "name": "coingazura-market-data-mcp",
-  "version": "0.1.1",
-  "description": "Read-only MCP server for COINGAZURA live market mood and yield candidate snapshots.",
+  "version": "0.1.2",
+  "description": "Read-only MCP server for COINGAZURA live market mood, stable exit risk, and yield candidate snapshots.",
   "type": "module",
   "main": "dist/index.js",
+  "bin": {
+    "coingazura-market-data-mcp": "dist/index.js"
+  },
   "files": [
     "dist",
     "README.md",
     "LAUNCHGUIDE.md"
   ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
@@ -20,7 +26,9 @@
     "crypto",
     "market-data",
     "yield",
-    "coingazura"
+    "coingazura",
+    "risk",
+    "stablecoin"
   ],
   "license": "MIT",
   "repository": {

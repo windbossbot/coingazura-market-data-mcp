@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -51,6 +53,27 @@ type YieldCandidatesOutput = {
     minTvlUsd?: number | null;
     stableOnly?: boolean;
     maxItems?: number | null;
+  };
+};
+
+type StableExitRiskOutput = {
+  checkedSymbol: string;
+  checkedChain?: string | null;
+  exitRiskLevel: "low" | "medium" | "high";
+  recommendation: string;
+  riskReasons: string[];
+  saferCandidates: Array<{
+    project: string;
+    symbol: string;
+    chain: string;
+    apy: number;
+    tvlUsd: number;
+    riskNote: string;
+  }>;
+  marketMood: {
+    moodScore: number;
+    classification: string;
+    riskBias: string;
   };
 };
 
@@ -119,6 +142,79 @@ function normalizeYieldCandidatesResponse(raw: any): YieldCandidatesOutput {
   };
 }
 
+function buildStableExitRisk(
+  mood: MarketMoodOutput,
+  candidates: YieldCandidatesOutput,
+  stableSymbol: string,
+  preferredChain?: string
+): StableExitRiskOutput {
+  const checkedSymbol = stableSymbol.toUpperCase();
+  const riskReasons: string[] = [];
+
+  const matching = candidates.items.filter((item) => item.symbol.toUpperCase().includes(checkedSymbol));
+  const saferCandidates = candidates.items
+    .filter((item) => item.stableLike)
+    .filter((item) => (preferredChain ? item.chain.toLowerCase() === preferredChain.toLowerCase() : true))
+    .filter((item) => item.tvlUsd >= 5_000_000)
+    .filter((item) => item.apy <= 30)
+    .slice(0, 3)
+    .map((item) => ({
+      project: item.project,
+      symbol: item.symbol,
+      chain: item.chain,
+      apy: item.apy,
+      tvlUsd: item.tvlUsd,
+      riskNote: item.riskNote
+    }));
+
+  let exitRiskLevel: "low" | "medium" | "high" = "low";
+  let recommendation = "hold with normal monitoring";
+
+  if (mood.riskBias === "defensive" || mood.classification === "fear") {
+    riskReasons.push("market mood is defensive");
+    exitRiskLevel = "medium";
+    recommendation = "reduce aggression and prefer safer parking options";
+  }
+
+  if (matching.some((item) => item.apy > 50)) {
+    riskReasons.push("matching yield candidate has unusually high APY");
+    exitRiskLevel = "high";
+    recommendation = "consider partial exit or rotation into safer stable candidates";
+  }
+
+  if (matching.some((item) => item.tvlUsd < 5_000_000)) {
+    riskReasons.push("matching yield candidate has relatively low TVL");
+    exitRiskLevel = "high";
+    recommendation = "avoid concentration and rotate only with stricter size control";
+  }
+
+  if (matching.some((item) => /reward token share high|low tvl/i.test(item.riskNote))) {
+    riskReasons.push("risk note flags reward-token dependence or low liquidity");
+    if (exitRiskLevel === "low") {
+      exitRiskLevel = "medium";
+      recommendation = "monitor closely and prefer cleaner stable venues";
+    }
+  }
+
+  if (riskReasons.length === 0) {
+    riskReasons.push("no immediate stress signal from current market mood or filtered yield snapshot");
+  }
+
+  return {
+    checkedSymbol,
+    checkedChain: preferredChain ?? null,
+    exitRiskLevel,
+    recommendation,
+    riskReasons,
+    saferCandidates,
+    marketMood: {
+      moodScore: mood.moodScore,
+      classification: mood.classification,
+      riskBias: mood.riskBias
+    }
+  };
+}
+
 server.registerTool(
   "coingazura_get_market_mood_snapshot",
   {
@@ -182,6 +278,47 @@ server.registerTool(
       ...(maxItems == null ? {} : { maxItems: String(maxItems) })
     });
     const output = normalizeYieldCandidatesResponse(raw);
+    return {
+      content: [{ type: "text", text: JSON.stringify(output, null, 2) }],
+      structuredContent: output
+    };
+  }
+);
+
+server.registerTool(
+  "coingazura_get_stable_exit_risk",
+  {
+    title: "COINGAZURA Stable Exit Risk",
+    description:
+      "Return a compact stablecoin exit-risk read using live market mood and live yield candidate context.",
+    inputSchema: {
+      stableSymbol: z.string().min(2).describe("Stable symbol or symbol fragment such as USDC or USDT"),
+      chain: z.string().optional().describe("Optional preferred chain such as Base or Ethereum"),
+      minTvlUsd: z.number().min(0).optional().describe("Optional minimum TVL filter for candidate comparison"),
+      maxItems: z.number().int().min(1).max(10).optional().describe("Optional max candidate rows to inspect")
+    },
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false
+    }
+  },
+  async ({ stableSymbol, chain, minTvlUsd, maxItems }) => {
+    const [moodRaw, yieldRaw] = await Promise.all([
+      fetchJson<any>(MARKET_MOOD_URL, {}),
+      fetchJson<any>(YIELD_CANDIDATES_URL, {
+        stableOnly: "true",
+        ...(chain ? { chain } : {}),
+        ...(minTvlUsd == null ? {} : { minTvlUsd: String(minTvlUsd) }),
+        ...(maxItems == null ? {} : { maxItems: String(maxItems) })
+      })
+    ]);
+
+    const mood = normalizeMarketMoodResponse(moodRaw);
+    const yields = normalizeYieldCandidatesResponse(yieldRaw);
+    const output = buildStableExitRisk(mood, yields, stableSymbol, chain);
+
     return {
       content: [{ type: "text", text: JSON.stringify(output, null, 2) }],
       structuredContent: output

@@ -3,7 +3,7 @@
 ## Listing Details
 
 - Name: COINGAZURA Market Data MCP
-- Short Description: Read-only MCP server for live crypto market mood and yield candidate snapshots.
+- Short Description: Read-only MCP server for live crypto market mood, stable exit risk, and yield candidate snapshots.
 - Category: Finance
 - Tags:
   - crypto
@@ -21,6 +21,7 @@ COINGAZURA Market Data MCP provides compact read-only tools for:
 - fear and greed style sentiment read
 - yield candidate snapshot
 - stable parking scan inputs
+- stable exit risk read
 
 This server is intentionally narrow and safe for first-time MCP usage. It fetches live read-only COINGAZURA resource data, does not place trades, does not move funds, and does not require wallet permissions.
 
@@ -47,13 +48,23 @@ Output includes:
 
 Returns filtered live yield candidate rows with:
 
-- protocol
+- project
 - symbol
 - chain
 - APY
 - TVL
 - risk note
 - source
+
+### 3. coingazura_get_stable_exit_risk
+
+Returns a compact stablecoin defense read with:
+
+- exitRiskLevel
+- recommendation
+- riskReasons
+- saferCandidates
+- marketMood
 
 ## Setup Requirements
 
@@ -76,6 +87,12 @@ npm run build
 
 ```bash
 npm start
+```
+
+## Install With npx
+
+```bash
+npx -y coingazura-market-data-mcp
 ```
 
 ## Transport

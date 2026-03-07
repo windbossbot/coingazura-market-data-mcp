@@ -1,6 +1,6 @@
 # COINGAZURA Market Data MCP
 
-Read-only MCP server for COINGAZURA live crypto market mood and yield candidate snapshots.
+Read-only MCP server for COINGAZURA live crypto market mood, stable exit risk, and yield candidate snapshots.
 
 ## Tools
 
@@ -8,6 +8,8 @@ Read-only MCP server for COINGAZURA live crypto market mood and yield candidate 
   - Returns a compact market mood read from the live COINGAZURA `market_mood_snapshot` resource.
 - `coingazura_get_yield_candidates`
   - Returns filtered live yield candidates from the COINGAZURA `yield_candidates_latest` resource.
+- `coingazura_get_stable_exit_risk`
+  - Returns a compact stablecoin exit-risk read using live market mood and live yield candidate context.
 
 ## Requirements
 
@@ -24,6 +26,12 @@ npm install
 ```bash
 npm run build
 npm start
+```
+
+## Install With npx
+
+```bash
+npx -y coingazura-market-data-mcp
 ```
 
 ## Current Scope
