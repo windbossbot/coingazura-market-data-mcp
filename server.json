@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.windbossbot/coingazura-market-data",
+  "title": "COINGAZURA Market Data",
+  "description": "Read-only MCP server for live crypto market mood, stable exit risk, and yield candidate snapshots.",
+  "version": "0.1.5",
+  "repository": {
+    "url": "https://github.com/windbossbot/coingazura-market-data-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "coingazura-market-data-mcp",
+      "version": "0.1.5",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

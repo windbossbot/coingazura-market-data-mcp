@@ -25,6 +25,12 @@ COINGAZURA Market Data MCP provides compact read-only tools for:
 
 This server is intentionally narrow and safe for first-time MCP usage. It fetches live read-only COINGAZURA resource data, does not place trades, does not move funds, and does not require wallet permissions.
 
+What makes it different:
+
+- it is opinionated toward compact risk reads instead of broad market coverage
+- it is designed to be easy to trust for first-time MCP installs
+- it turns live resource data into small actionable snapshots instead of raw dashboards
+
 Quality-first rule:
 
 - this MCP should grow only when a new tool is clearly useful and safe
@@ -71,6 +77,19 @@ Returns a compact stablecoin defense read with:
 - riskReasons
 - saferCandidates
 - marketMood
+
+## Example User Questions
+
+- "Is the market mood risk-on or defensive right now?"
+- "Which yield candidates on Base still look acceptable after TVL and APY filtering?"
+- "Does USDC look safe enough to hold here or should I rotate?"
+
+## Example Output Shape
+
+- concise JSON response
+- classification and risk bias
+- clear action hint
+- safer alternatives when risk is elevated
 
 ## Setup Requirements
 
@@ -138,3 +157,4 @@ npx -y coingazura-market-data-mcp
 - live resource-backed local stdio version
 - remote hosted endpoint not yet provided
 - quality-first expansion mode
+- official registry metadata prepared locally for next publish step
