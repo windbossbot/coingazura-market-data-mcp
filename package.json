@@ -1,7 +1,7 @@
 {
   "name": "coingazura-market-data-mcp",
   "mcpName": "io.github.windbossbot/coingazura-market-data",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Read-only MCP server for COINGAZURA live market mood, stable exit risk, and yield candidate snapshots.",
   "type": "module",
   "main": "dist/index.js",
