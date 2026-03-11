@@ -20,7 +20,9 @@
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "dev": "tsx src/index.ts",
-    "release:check": "npm run build && npm pack --dry-run"
+    "smoke:live": "node scripts/live-smoke-check.mjs",
+    "visibility:check": "node scripts/visibility-check.mjs",
+    "release:check": "npm run build && npm run smoke:live && npm run visibility:check && npm pack --dry-run"
   },
   "keywords": [
     "mcp",
@@ -43,6 +45,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "overrides": {
+    "hono": "4.12.7"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.18.0",

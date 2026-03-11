@@ -95,6 +95,15 @@ npm run build
 npm start
 ```
 
+## Verification
+
+```bash
+npm run smoke:live
+npm run visibility:check
+```
+
+Use both checks before publish so the package is not only buildable, but also live-data-ready and listing-ready.
+
 ## Install With npx
 
 ```bash

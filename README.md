@@ -28,6 +28,18 @@ npm run build
 npm start
 ```
 
+## Verification
+
+```bash
+npm run smoke:live
+npm run visibility:check
+```
+
+These checks are the MCP version of the runtime smoke/visibility discipline used in other lanes:
+
+- `smoke:live` confirms live resource endpoints respond with expected keys
+- `visibility:check` confirms package and listing docs still expose the minimum release metadata
+
 ## Update And Upload
 
 Use the project release guide for repeatable edit, verify, git push, and npm publish steps:
