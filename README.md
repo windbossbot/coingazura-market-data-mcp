@@ -28,6 +28,12 @@ npm run build
 npm start
 ```
 
+## Update And Upload
+
+Use the project release guide for repeatable edit, verify, git push, and npm publish steps:
+
+- `UPDATE_AND_UPLOAD_GUIDE.md`
+
 ## Install With npx
 
 ```bash
@@ -41,6 +47,17 @@ npx -y coingazura-market-data-mcp
 - No authentication required for the initial local version
 - Live fetch from COINGAZURA resource endpoints
 - Fixed network targets only
+
+## Quality Rule
+
+- installs matter, but quality matters first
+- new tools should not be added just to increase tool count
+- every new tool must justify:
+  - clear user value
+  - narrow scope
+  - low ambiguity
+  - low trust / security drag
+- if a tool feels broad, shallow, or weakly differentiated, keep it in draft instead of shipping it
 
 ## Security Notes
 
@@ -57,3 +74,12 @@ npx -y coingazura-market-data-mcp
 ## Notes
 
 This version uses live read-only COINGAZURA resource endpoints and is designed for local stdio MCP usage first.
+
+## Cross-Lane Idea Exchange
+
+Execution stays in this repo.
+
+Reusable ideas are tracked separately in:
+
+- `C:\Users\GWLin\workspace_shared_ideas`
+- `C:\Users\GWLin\workspace_mcp\coingazura-market-data-mcp\CROSS_LANE_NOTES.md`
