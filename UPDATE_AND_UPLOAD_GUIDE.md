@@ -13,6 +13,7 @@ Common targets:
 - `LAUNCHGUIDE.md`
 - `SECURITY.md`
 - `server.json`
+- `package.json`
 
 ## 2. Verify Locally
 
@@ -27,6 +28,7 @@ What this does:
 
 - confirms TypeScript build passes
 - confirms the npm package can be packed cleanly
+- confirms live checks still pass before a release
 
 If you only changed docs, still run `npm run release:check` before upload.
 
@@ -38,6 +40,12 @@ git diff
 ```
 
 Make sure only intended files changed.
+
+Before a release, confirm version alignment across:
+
+- `package.json`
+- `server.json`
+- `src/index.ts`
 
 ## 4. Commit
 
@@ -76,6 +84,16 @@ Then publish:
 npm publish --access public
 ```
 
+If npm publish fails because of security-key or 2FA policy, do not guess. Use:
+
+- `C:\Users\GWLin\workspace_4lane_hub\MCP\NPM_PUBLISH_TOKEN_RUNBOOK_LATEST.md`
+
+Known behavior in this repo:
+
+- successful local publish previously used a granular npm token with `bypass 2FA`
+- a later failure happened because that publish token expired
+- browser login alone is not enough when npm publish requires stronger auth
+
 ## 7. Fast Rule For When To Publish
 
 Publish:
@@ -107,3 +125,4 @@ Use this order every time:
 
 - paid conversion is intentionally out of scope for now
 - keep the MCP read-only and narrow unless a new tool has strong quality justification
+- npm publish auth is documented in `NPM_PUBLISH_TOKEN_RUNBOOK_LATEST.md`

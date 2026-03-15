@@ -1,23 +1,24 @@
 # [MCP] Record Registry (Latest)
 
-- updated_kst: `2026-03-14 15:00:00`
-- purpose: `현재 운영 기준 파일 고정 + 내부 planning 분리 + 정리 기준 유지`
+- updated_kst: `2026-03-15 23:20:00`
+- purpose: `현재 운영 기준 파일 고정 + 내부 planning 분리 + 정리 기준 유지 + npm publish auth runbook 고정`
 
 ## Canonical Current Files
 
 - read-first entry: `C:\Users\GWLin\workspace_4lane_hub\MCP\START_HERE_MCP.md`
 - receipt/reply current: `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_REPLY_WITH_TIME_20260311.md`
+- project goal: `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_PROJECT_GOAL_LATEST.md`
 - launch guide: `C:\Users\GWLin\workspace_4lane_hub\MCP\LAUNCHGUIDE.md`
 - package metadata: `C:\Users\GWLin\workspace_4lane_hub\MCP\package.json`
 - registry metadata: `C:\Users\GWLin\workspace_4lane_hub\MCP\server.json`
+- npm publish auth runbook: `C:\Users\GWLin\workspace_4lane_hub\MCP\NPM_PUBLISH_TOKEN_RUNBOOK_LATEST.md`
 - current checklist: `C:\Users\GWLin\workspace_4lane_hub\MCP\planning\CHECKLIST_MCP_QUALITY_CURRENT.md`
 
 ## Planning Families
 
 - `planning\MCP_MARKETPLACE_*`
-- `planning\MCP_PAID_*`
-- `planning\MCP_SCORE_*`
-- `planning\MCP_PROPOSAL_*`
+- `planning\MCP_GROWTH_*`
+- `planning\MCP_ACP_*`
 
 ## Retention Rule
 
