@@ -10,11 +10,15 @@ Purpose:
 
 ## Current Planning Files
 
-- `CHECKLIST_MCP_QUALITY_CURRENT.md`
 - `MCP_ACP_TRANSFER_NOTES_LATEST.md`
 - `MCP_GROWTH_ROADMAP_LATEST.md`
 - `MCP_MARKETPLACE_COPY_20260311.md`
 - `MCP_MARKETPLACE_FIELD_MAP_20260311.md`
+
+## Installed Operator Skills
+
+- `security-best-practices`
+- `security-threat-model`
 
 ## Archive
 

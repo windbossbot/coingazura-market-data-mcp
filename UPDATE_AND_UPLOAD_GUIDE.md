@@ -2,6 +2,10 @@
 
 This guide is the default flow for making changes and uploading them safely.
 
+Always run together with:
+
+- `C:\Users\GWLin\workspace_4lane_hub\MCP\RELEASE_CHECKLIST_LATEST.md`
+
 ## 1. Edit
 
 Change only the files needed for the update.
@@ -46,6 +50,10 @@ Before a release, confirm version alignment across:
 - `package.json`
 - `server.json`
 - `src/index.ts`
+
+Then walk through:
+
+- `RELEASE_CHECKLIST_LATEST.md`
 
 ## 4. Commit
 

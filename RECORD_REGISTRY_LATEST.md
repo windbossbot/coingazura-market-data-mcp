@@ -8,11 +8,11 @@
 - read-first entry: `C:\Users\GWLin\workspace_4lane_hub\MCP\START_HERE_MCP.md`
 - receipt/reply current: `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_REPLY_WITH_TIME_20260311.md`
 - project goal: `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_PROJECT_GOAL_LATEST.md`
+- release checklist: `C:\Users\GWLin\workspace_4lane_hub\MCP\RELEASE_CHECKLIST_LATEST.md`
 - launch guide: `C:\Users\GWLin\workspace_4lane_hub\MCP\LAUNCHGUIDE.md`
 - package metadata: `C:\Users\GWLin\workspace_4lane_hub\MCP\package.json`
 - registry metadata: `C:\Users\GWLin\workspace_4lane_hub\MCP\server.json`
 - local operator publish note: local-only, not tracked
-- current checklist: `C:\Users\GWLin\workspace_4lane_hub\MCP\planning\CHECKLIST_MCP_QUALITY_CURRENT.md`
 
 ## Planning Families
 
