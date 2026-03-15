@@ -40,3 +40,4 @@ Purpose:
 
 - do not move current active order files out of root
 - if a planning note becomes public-facing, copy or promote it intentionally
+- document cleanup follows `C:\Users\GWLin\workspace_4lane_hub\MCP\DOCUMENTATION_SYSTEM_POLICY_LATEST.md`

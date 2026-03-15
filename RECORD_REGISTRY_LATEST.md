@@ -6,7 +6,9 @@
 ## Canonical Current Files
 
 - read-first entry: `C:\Users\GWLin\workspace_4lane_hub\MCP\START_HERE_MCP.md`
+- operating rules: `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_OPERATING_RULES_LATEST.md`
 - receipt/reply current: `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_REPLY_WITH_TIME_20260311.md`
+- documentation system: `C:\Users\GWLin\workspace_4lane_hub\MCP\DOCUMENTATION_SYSTEM_POLICY_LATEST.md`
 - project goal: `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_PROJECT_GOAL_LATEST.md`
 - release checklist: `C:\Users\GWLin\workspace_4lane_hub\MCP\RELEASE_CHECKLIST_LATEST.md`
 - launch guide: `C:\Users\GWLin\workspace_4lane_hub\MCP\LAUNCHGUIDE.md`
@@ -19,6 +21,8 @@
 - `planning\MCP_MARKETPLACE_*`
 - `planning\MCP_GROWTH_*`
 - `planning\MCP_ACP_*`
+- `planning\MCP_MONETIZATION_*`
+- `planning\MCP_REVENUE_*`
 
 ## Retention Rule
 

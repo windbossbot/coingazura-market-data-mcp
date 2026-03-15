@@ -10,21 +10,18 @@
 4. `C:\Users\GWLin\workspace_4lane_hub\CENTRAL\ORDER_STORAGE_NORMALIZATION_20260314.md`
 5. `C:\Users\GWLin\workspace_4lane_hub\CENTRAL\ORDER_RECEIPT_MEANS_REPLY_20260314.md`
 6. `C:\Users\GWLin\workspace_4lane_hub\CENTRAL\ORDER_FULL_DOCUMENTATION_PASS_20260315.md`
-7. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_RECEIPT_REPLY_REQUIRED_20260314.md`
-8. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_FULL_DOCUMENTATION_PASS_20260315.md`
-9. `C:\Users\GWLin\workspace_4lane_hub\MCP\SESSION_IDENTITY_ORDER.md`
-10. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_REPLY_WITH_TIME_20260311.md`
-11. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_ORGANIZE_REMOVE_20260312.md`
-12. `C:\Users\GWLin\workspace_4lane_hub\MCP\README.md`
-13. `C:\Users\GWLin\workspace_4lane_hub\MCP\LAUNCHGUIDE.md`
-14. `C:\Users\GWLin\workspace_4lane_hub\MCP\CROSS_LANE_NOTES.md`
-15. `C:\Users\GWLin\workspace_4lane_hub\MCP\SECURITY_AUDIT_LATEST.md`
-16. `C:\Users\GWLin\workspace_4lane_hub\MCP\BACKGROUND_PROCESS_POLICY_LATEST.md`
-17. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_HYGIENE_POLICY_LATEST.md`
-18. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_REGISTRY_LATEST.md`
-19. `C:\Users\GWLin\workspace_4lane_hub\MCP\INTERNAL_FILE_SCOPE_AUDIT_20260314.md`
-20. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_PROJECT_GOAL_LATEST.md`
-21. `C:\Users\GWLin\workspace_4lane_hub\MCP\RELEASE_CHECKLIST_LATEST.md`
+7. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_OPERATING_RULES_LATEST.md`
+8. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_REPLY_WITH_TIME_20260311.md`
+9. `C:\Users\GWLin\workspace_4lane_hub\MCP\DOCUMENTATION_SYSTEM_POLICY_LATEST.md`
+10. `C:\Users\GWLin\workspace_4lane_hub\MCP\README.md`
+11. `C:\Users\GWLin\workspace_4lane_hub\MCP\LAUNCHGUIDE.md`
+12. `C:\Users\GWLin\workspace_4lane_hub\MCP\CROSS_LANE_NOTES.md`
+13. `C:\Users\GWLin\workspace_4lane_hub\MCP\SECURITY_AUDIT_LATEST.md`
+14. `C:\Users\GWLin\workspace_4lane_hub\MCP\BACKGROUND_PROCESS_POLICY_LATEST.md`
+15. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_HYGIENE_POLICY_LATEST.md`
+16. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_REGISTRY_LATEST.md`
+17. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_PROJECT_GOAL_LATEST.md`
+18. `C:\Users\GWLin\workspace_4lane_hub\MCP\RELEASE_CHECKLIST_LATEST.md`
 
 ## Rules
 
@@ -42,3 +39,4 @@
 - 기록 정리 전에는 `RECORD_HYGIENE_POLICY_LATEST.md`와 `RECORD_REGISTRY_LATEST.md`를 먼저 본다
 - background 정리는 `BACKGROUND_PROCESS_POLICY_LATEST.md` 기준으로 한다
 - 보안 기준은 `SECURITY_AUDIT_LATEST.md` 기준으로 본다
+- 파일 정리 기준은 `DOCUMENTATION_SYSTEM_POLICY_LATEST.md` 기준으로 본다
