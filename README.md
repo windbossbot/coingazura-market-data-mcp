@@ -124,7 +124,4 @@ This version uses live read-only COINGAZURA resource endpoints and is designed f
 
 Execution stays in this repo.
 
-Reusable ideas are tracked separately in:
-
-- `C:\Users\GWLin\workspace_shared_ideas`
-- `C:\Users\GWLin\workspace_4lane_hub\MCP\CROSS_LANE_NOTES.md`
+Reusable ideas are tracked through lane-specific operating notes when needed.

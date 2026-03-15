@@ -21,10 +21,9 @@ Updated: 2026-03-15
 - `src/index.ts` and `server.json` had stale version values relative to the published package
 - current state: aligned to `0.1.7`
 
-3. npm publish auth depended on a time-limited bypass-2FA token.
-- previous npm release flow relied on a granular token with `bypass 2FA`
-- once that token expired, local publish failed even though browser login still worked
-- current mitigation: document the exact token creation method in `NPM_PUBLISH_TOKEN_RUNBOOK_LATEST.md`
+3. Publish auth handling should stay out of public repo docs.
+- previous release work exposed too much operator-auth procedure in tracked documentation
+- current mitigation: keep exact token handling in local-only notes and keep public docs generic
 
 4. Future hosted mode would need stronger service-side controls.
 - current package is local stdio first
@@ -50,6 +49,7 @@ Updated: 2026-03-15
 - direct secret-bearing config in this repo: not observed
 - publish token value stored in repo docs: no
 - local npm auth secret exists outside repo in `C:\Users\GWLin\.npmrc`: yes
+- exact publish-auth recovery steps stored in tracked docs: no
 
 ## Operator Rules
 
@@ -58,4 +58,4 @@ Updated: 2026-03-15
 3. do not add arbitrary fetch capability without separate security review
 4. if hosted mode is introduced, treat it as a separate security gate
 5. keep npm publish tokens only in `C:\Users\GWLin\.npmrc`, never in repo files
-6. if a publish token expires or is rotated, update the runbook and remove stale assumptions
+6. keep exact publish-auth recovery steps in local-only notes, not tracked repo docs

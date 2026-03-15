@@ -84,14 +84,15 @@ Then publish:
 npm publish --access public
 ```
 
-If npm publish fails because of security-key or 2FA policy, do not guess. Use:
+If npm publish fails because of security-key or 2FA policy, do not guess.
 
-- `C:\Users\GWLin\workspace_4lane_hub\MCP\NPM_PUBLISH_TOKEN_RUNBOOK_LATEST.md`
+- use the local-only operator publish note kept outside tracked repo content
+- do not write actual token handling steps or token values into public repo docs
 
 Known behavior in this repo:
 
-- successful local publish previously used a granular npm token with `bypass 2FA`
-- a later failure happened because that publish token expired
+- successful local publish depends on valid npm publish auth
+- a later failure happened because that auth state expired
 - browser login alone is not enough when npm publish requires stronger auth
 
 ## 7. Fast Rule For When To Publish
@@ -125,4 +126,4 @@ Use this order every time:
 
 - paid conversion is intentionally out of scope for now
 - keep the MCP read-only and narrow unless a new tool has strong quality justification
-- npm publish auth is documented in `NPM_PUBLISH_TOKEN_RUNBOOK_LATEST.md`
+- npm publish auth details should stay in local-only operator notes, not tracked docs

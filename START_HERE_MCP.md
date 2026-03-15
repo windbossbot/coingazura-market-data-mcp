@@ -23,8 +23,7 @@
 17. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_HYGIENE_POLICY_LATEST.md`
 18. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_REGISTRY_LATEST.md`
 19. `C:\Users\GWLin\workspace_4lane_hub\MCP\INTERNAL_FILE_SCOPE_AUDIT_20260314.md`
-20. `C:\Users\GWLin\workspace_4lane_hub\MCP\NPM_PUBLISH_TOKEN_RUNBOOK_LATEST.md`
-21. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_PROJECT_GOAL_LATEST.md`
+20. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_PROJECT_GOAL_LATEST.md`
 
 ## Rules
 

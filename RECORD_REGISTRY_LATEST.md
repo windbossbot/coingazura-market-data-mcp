@@ -11,7 +11,7 @@
 - launch guide: `C:\Users\GWLin\workspace_4lane_hub\MCP\LAUNCHGUIDE.md`
 - package metadata: `C:\Users\GWLin\workspace_4lane_hub\MCP\package.json`
 - registry metadata: `C:\Users\GWLin\workspace_4lane_hub\MCP\server.json`
-- npm publish auth runbook: `C:\Users\GWLin\workspace_4lane_hub\MCP\NPM_PUBLISH_TOKEN_RUNBOOK_LATEST.md`
+- local operator publish note: local-only, not tracked
 - current checklist: `C:\Users\GWLin\workspace_4lane_hub\MCP\planning\CHECKLIST_MCP_QUALITY_CURRENT.md`
 
 ## Planning Families
