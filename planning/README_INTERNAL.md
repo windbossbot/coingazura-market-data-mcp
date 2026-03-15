@@ -14,9 +14,11 @@ Purpose:
 - `MCP_GROWTH_ROADMAP_LATEST.md`
 - `MCP_MARKETPLACE_COPY_20260311.md`
 - `MCP_MARKETPLACE_FIELD_MAP_20260311.md`
+- `MCP_REVENUE_RESEARCH_LATEST.md`
 
 ## Installed Operator Skills
 
+- `doc`
 - `security-best-practices`
 - `security-threat-model`
 

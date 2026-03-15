@@ -41,6 +41,10 @@ Do not switch pricing until these are real:
 - security review for hosted mode
 - free vs paid value split that is concrete
 
+Reference:
+
+- `C:\Users\GWLin\workspace_4lane_hub\MCP\planning\MCP_REVENUE_RESEARCH_LATEST.md`
+
 ## Candidate Paid Differentiators
 
 - hosted endpoint
@@ -64,6 +68,18 @@ Priority imports from ACP operating patterns:
 See:
 
 - `C:\Users\GWLin\workspace_4lane_hub\MCP\planning\MCP_ACP_TRANSFER_NOTES_LATEST.md`
+- `C:\Users\GWLin\workspace_4lane_hub\MCP\planning\MCP_REVENUE_RESEARCH_LATEST.md`
+
+## Phase 5: Content-Led Distribution
+
+- use YouTube for short demo-led proof of value
+- use X for short install/use-case credibility posts
+- do not produce generic "MCP trend" content when product proof content is available
+- every content post should point to one concrete action:
+  - install
+  - marketplace listing
+  - waitlist
+  - premium brief interest
 
 ## Risks To Avoid
 

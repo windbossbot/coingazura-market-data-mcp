@@ -54,6 +54,10 @@ Two paths are allowed in planning:
 - use ACP for specialist distribution and paid brief delivery
 - keep MCP lane documentation ready for that handoff, but do not cross-edit ACP runtime from here
 
+3. content-distribution path
+- use YouTube and X as proof/discovery channels for installs and later premium conversion
+- content must stay tied to real outputs, not generic MCP commentary
+
 ## ACP-Derived Product Angles Worth Preserving
 
 - compact risk brief
