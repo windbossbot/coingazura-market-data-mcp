@@ -19,6 +19,19 @@ The strongest revenue paths are:
 3. ACP-linked paid briefs using the same risk logic
 4. content/distribution funnel from YouTube and X into installs, trials, and premium conversion
 
+## Current Operating Rule
+
+This is a living research file, not a one-time memo.
+
+New monetization research should continue to be added here and then reflected into:
+
+- `MCP_GROWTH_ROADMAP_LATEST.md`
+- `MCP_PROJECT_GOAL_LATEST.md`
+
+See process:
+
+- `C:\Users\GWLin\workspace_4lane_hub\MCP\planning\MCP_MONETIZATION_RESEARCH_LOOP_LATEST.md`
+
 ## Revenue Path 1: Paid MCP Marketplace Listing
 
 What exists in the market now:
@@ -165,6 +178,20 @@ The safest first revenue test is:
   - ACP-delivered premium risk brief
 
 This avoids breaking trust on the core install path.
+
+## What This Means Right Now
+
+Do now:
+
+- keep collecting hosted MCP pricing patterns
+- keep refining premium boundary language
+- keep MCP free while improving trust and distribution
+
+Do not do yet:
+
+- switch the current marketplace listing to paid
+- imply SLA, support, or hosted access that does not exist
+- sell generic "premium MCP" language without a concrete premium asset
 
 ## Risks
 

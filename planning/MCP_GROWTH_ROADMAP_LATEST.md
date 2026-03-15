@@ -44,6 +44,7 @@ Do not switch pricing until these are real:
 Reference:
 
 - `C:\Users\GWLin\workspace_4lane_hub\MCP\planning\MCP_REVENUE_RESEARCH_LATEST.md`
+- `C:\Users\GWLin\workspace_4lane_hub\MCP\planning\MCP_MONETIZATION_RESEARCH_LOOP_LATEST.md`
 
 ## Candidate Paid Differentiators
 
@@ -93,3 +94,4 @@ See:
 1. keep current docs aligned with `0.1.7`
 2. tighten public-facing value copy
 3. prepare paid conversion by product boundary first, not pricing first
+4. keep adding external pricing/distribution evidence before any paid switch
