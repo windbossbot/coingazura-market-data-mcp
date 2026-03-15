@@ -12,6 +12,7 @@ Common targets:
 - `README.md`
 - `LAUNCHGUIDE.md`
 - `SECURITY.md`
+- `server.json`
 
 ## 2. Verify Locally
 
@@ -41,7 +42,7 @@ Make sure only intended files changed.
 ## 4. Commit
 
 ```bash
-git add src/index.ts README.md LAUNCHGUIDE.md SECURITY.md package.json UPDATE_AND_UPLOAD_GUIDE.md
+git add src/index.ts README.md LAUNCHGUIDE.md SECURITY.md package.json server.json UPDATE_AND_UPLOAD_GUIDE.md
 git commit -m "Update MCP docs and release flow"
 ```
 
@@ -66,6 +67,8 @@ npm version patch
 ```
 
 Use `minor` or `major` only when the change really justifies it.
+
+If local-only untracked planning notes are present and you intentionally do not want to commit them, either clean the working tree first or use `npm version patch --force` carefully.
 
 Then publish:
 

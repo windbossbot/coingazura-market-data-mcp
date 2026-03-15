@@ -80,7 +80,7 @@ type StableExitRiskOutput = {
 
 const server = new McpServer({
   name: "coingazura-market-data-mcp-server",
-  version: "0.1.3"
+  version: "0.1.6"
 });
 
 async function fetchJson<T>(baseUrl: string, params: Record<string, string>): Promise<T> {
