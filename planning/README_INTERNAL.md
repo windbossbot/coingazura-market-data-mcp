@@ -17,12 +17,6 @@ Purpose:
 - `MCP_MONETIZATION_RESEARCH_LOOP_LATEST.md`
 - `MCP_REVENUE_RESEARCH_LATEST.md`
 
-## Installed Operator Skills
-
-- `doc`
-- `security-best-practices`
-- `security-threat-model`
-
 ## Archive
 
 - old planning snapshots should move under `archive\` only when they still have historical value
