@@ -21,8 +21,12 @@ Updated: 2026-03-15
 - no arbitrary URL fetch added
 - fixed outbound host rule still intact
 - no token, key, or auth value appears in tracked files
+- `.env` is not tracked
+- `.env.example` exists for future secret-bearing additions
 - public docs do not expose internal-only operator procedures
 - `npm audit --json` returns 0 vulnerabilities
+- future asset-impacting actions would default to `dry_run`
+- future external-data actions include null/NaN/outlier guards
 
 ## 3. Version And Metadata Check
 
@@ -56,8 +60,11 @@ Updated: 2026-03-15
 
 ## 7. Background Check
 
+- same script path was checked before rerun
+- local port conflict was checked before rerun when relevant
 - no unnecessary MCP runtime or helper process is left running
 - no temporary publish or debug process is left without purpose
+- any intentionally kept process will have PID and stop command reported
 
 ## 8. Publish Check
 

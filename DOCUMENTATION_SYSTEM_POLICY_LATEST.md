@@ -2,6 +2,12 @@
 
 Updated: 2026-03-15
 
+## External Basis
+
+- short read-first files should stay short
+- current status, policy, execution brief, and historical evidence should stay separated
+- repeated evidence belongs in logs/metrics more than markdown sprawl
+
 ## Purpose
 
 - define where MCP documents belong
@@ -49,6 +55,15 @@ These should stay untracked.
 - if two files serve the same current purpose, keep one canonical file
 - if an older note is fully absorbed into a current latest file, delete the old note
 - if historical context is still useful, archive it instead of keeping it as current
+
+## Naming Rule
+
+- `*_LATEST.md`
+  - current state or current policy to read now
+- `*_CHECKLIST.md`
+  - execution-time checklist
+- `*_YYYYMMDD.md`
+  - dated history or explicit event record
 
 ## Delete Rule
 

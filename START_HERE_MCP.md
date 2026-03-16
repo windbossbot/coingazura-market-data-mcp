@@ -13,15 +13,16 @@
 7. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_OPERATING_RULES_LATEST.md`
 8. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_REPLY_WITH_TIME_20260311.md`
 9. `C:\Users\GWLin\workspace_4lane_hub\MCP\DOCUMENTATION_SYSTEM_POLICY_LATEST.md`
-10. `C:\Users\GWLin\workspace_4lane_hub\MCP\README.md`
-11. `C:\Users\GWLin\workspace_4lane_hub\MCP\LAUNCHGUIDE.md`
-12. `C:\Users\GWLin\workspace_4lane_hub\MCP\CROSS_LANE_NOTES.md`
-13. `C:\Users\GWLin\workspace_4lane_hub\MCP\SECURITY_AUDIT_LATEST.md`
-14. `C:\Users\GWLin\workspace_4lane_hub\MCP\BACKGROUND_PROCESS_POLICY_LATEST.md`
-15. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_HYGIENE_POLICY_LATEST.md`
-16. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_REGISTRY_LATEST.md`
-17. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_PROJECT_GOAL_LATEST.md`
-18. `C:\Users\GWLin\workspace_4lane_hub\MCP\RELEASE_CHECKLIST_LATEST.md`
+10. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_OPERATING_BRIEF.md`
+11. `C:\Users\GWLin\workspace_4lane_hub\MCP\README.md`
+12. `C:\Users\GWLin\workspace_4lane_hub\MCP\LAUNCHGUIDE.md`
+13. `C:\Users\GWLin\workspace_4lane_hub\MCP\CROSS_LANE_NOTES.md`
+14. `C:\Users\GWLin\workspace_4lane_hub\MCP\SECURITY_AUDIT_LATEST.md`
+15. `C:\Users\GWLin\workspace_4lane_hub\MCP\BACKGROUND_PROCESS_POLICY_LATEST.md`
+16. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_HYGIENE_POLICY_LATEST.md`
+17. `C:\Users\GWLin\workspace_4lane_hub\MCP\RECORD_REGISTRY_LATEST.md`
+18. `C:\Users\GWLin\workspace_4lane_hub\MCP\MCP_PROJECT_GOAL_LATEST.md`
+19. `C:\Users\GWLin\workspace_4lane_hub\MCP\RELEASE_CHECKLIST_LATEST.md`
 
 ## Rules
 

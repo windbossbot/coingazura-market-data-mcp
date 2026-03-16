@@ -4,3 +4,9 @@ npm-debug.log*
 .npmrc
 *.tgz
 *_LOCAL.md
+.env
+.env.*
+!.env.example
+logs/
+.cache/
+__pycache__/

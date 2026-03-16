@@ -1,6 +1,6 @@
 # [MCP] Security Audit
 
-Updated: 2026-03-15
+Updated: 2026-03-16
 
 ## Scope
 
@@ -33,10 +33,15 @@ Updated: 2026-03-15
   - sanitized error responses
   - logging policy
   - support boundary
+  - `.env` / `.env.example` secret flow
+
+5. Asset-impacting or destructive actions would need dry-run and validation guards if ever added.
+- current package does not place trades, move assets, or delete user files
+- if that changes later, default to `dry_run` and add null/NaN/outlier guards first
 
 ### Low
 
-5. Public resource host is visible in source and docs.
+6. Public resource host is visible in source and docs.
 - current use is read-only and fixed-host only
 - keep it that way: no secrets, admin notes, or private operator details should ever be exposed through public resources
 
@@ -47,6 +52,7 @@ Updated: 2026-03-15
 - arbitrary URL input: no
 - wallet/signing/transfer capability: no
 - direct secret-bearing config in this repo: not observed
+- `.env.example` guidance present for future secret-bearing additions: yes
 - publish token value stored in repo docs: no
 - local npm auth secret exists outside repo in `C:\Users\GWLin\.npmrc`: yes
 - exact publish-auth recovery steps stored in tracked docs: no
@@ -59,3 +65,4 @@ Updated: 2026-03-15
 4. if hosted mode is introduced, treat it as a separate security gate
 5. keep npm publish tokens only in `C:\Users\GWLin\.npmrc`, never in repo files
 6. keep exact publish-auth recovery steps in local-only notes, not tracked repo docs
+7. if any asset-impacting action is added later, require `dry_run` default plus null/NaN/outlier validation
